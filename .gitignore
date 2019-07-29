@@ -1,7 +1,4 @@
-# Logs
-logs
-*.log
-
-# dotenv environment variables file
-.env
-.env.test
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
