@@ -24,7 +24,9 @@ app.use('/notes', notesRouter)
 app.use(function errorHandler(error, req, res, next) {
   let response
   if (NODE_ENV === 'production') {
-    response = { error: { message: 'server error', error } }
+    // response = { error: { message: 'server error'} }
+    console.error(error)
+    response = { message: error.message, error }
   } else {
     console.error(error)
     response = { message: error.message, error }
