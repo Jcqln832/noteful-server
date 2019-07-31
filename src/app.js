@@ -13,7 +13,8 @@ const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';
 
-app.use(morgan(morganOption))
+// app.use(morgan(morganOption))
+app.use(morgan(common))
 app.use(cors())
 app.use(helmet())
 
@@ -29,6 +30,7 @@ app.use(function errorHandler(error, req, res, next) {
     response = { message: error.message, error }
   }
   res.status(500).json(response)
+  console.error(error)
 })
 
 module.exports = app
