@@ -14,7 +14,7 @@ const morganOption = (NODE_ENV === 'production')
   : 'common';
 
 // app.use(morgan(morganOption))
-app.use(morgan(common))
+app.use(morgan('common'))
 app.use(cors())
 app.use(helmet())
 
@@ -24,13 +24,12 @@ app.use('/notes', notesRouter)
 app.use(function errorHandler(error, req, res, next) {
   let response
   if (NODE_ENV === 'production') {
-    response = { error: { message: 'server error' } }
+    response = { error: { message: 'server error', error } }
   } else {
     console.error(error)
     response = { message: error.message, error }
   }
   res.status(500).json(response)
-  console.error(error)
 })
 
 module.exports = app
